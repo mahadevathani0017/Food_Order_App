@@ -7,7 +7,8 @@
 1-useState() 
 2-useEffect()
 
-two types of routing 
+Two types of routing 
+
 1.Client side routing
   - upadate the URL without request to server 
 2.Server Side routing

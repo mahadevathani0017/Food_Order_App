@@ -13,7 +13,7 @@ const RestaurantMenu = () => {
           "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9717208&lng=77.6006245&restaurantId=393840&catalog_qa=undefined&submitAction=ENTER"
         );
         const json = await data.json();
-        console.log(json);
+     
         setResInfo(json.data);
         
         
@@ -33,7 +33,7 @@ const RestaurantMenu = () => {
     <h2>{costForTwoMessage}</h2>
     <h2>Menu</h2>
     <ul>
-     {/* {itemCards.map(item => <li>{item.card.info.name}</li>)} */}
+     {itemCards.map(item => <li>{item.card.info.name}</li>)}
     </ul>
   </div>
 );

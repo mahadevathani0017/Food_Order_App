@@ -17,7 +17,7 @@ const Body = () => {
     );
 
     const json = await data.json();
-    
+    console.log(data);
     
     
     const restaurants =

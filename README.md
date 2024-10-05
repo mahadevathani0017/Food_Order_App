@@ -7,6 +7,8 @@
 1-useState() 
 2-useEffect()
 
+useEffect:-is render everytime if it is not contain dependency array
+
 Two types of routing 
 
 1.Client side routing

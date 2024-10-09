@@ -8,42 +8,26 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 
 
-
-const AppLayout = () => {
-  return(
-      <div className="app">
-        <Header/>
-        <Outlet/>
-      </div>
+const AppLayout = () =>{
+  return (
+    <div className="app">
+      <Header/>
+      <Body/>
+    </div>
   );
 };
 
-const appRouter = createBrowserRouter([
+const appRouter =createBrowserRouter([
   {
-    path: "/",
-    element: <AppLayout />,
-    children: [
-      {
-        path:"/",
-        element:<Body/>,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path:"/restaurants/:resId",
-        element:<RestaurantMenu/>,
-      }
-    ],
-    errorElement: <Error />,
+    path:"/",
+    element:<AppLayout/>,
   },
-]);
+  {
+    path:"/about",
+    element:<About/>
+  }
+])
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={appRouter}/>);
+const root=ReactDOM.createRoot(document.getElementById("root"));
+root.rendor(<AppLayout/>)

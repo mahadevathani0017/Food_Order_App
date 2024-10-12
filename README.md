@@ -13,6 +13,8 @@ Two types of routing
 
 1.Client side routing
   - upadate the URL without request to server 
+  - depend on the client
 2.Server Side routing
   - Update the URL with request to server 
-
+  - not depend on the client
+  

@@ -18,3 +18,4 @@ Two types of routing
   - Update the URL with request to server 
   - not depend on the client
   
+# speak while you code

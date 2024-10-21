@@ -5,6 +5,7 @@ import { MENU_API_URL } from "../utils/constants";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
+
   const { resId } = useParams();
 
   useEffect(() => {
@@ -13,23 +14,17 @@ const RestaurantMenu = () => {
 
   const fetchMenu = async () => {
     try {
-      const response = await fetch(`${MENU_API_URL}${resId}`);
-      const json = await response.json();
-      console.log("API Response:", json); // Log the full response to check the structure
+      const data = await fetch(`${MENU_API_URL}${resId}`); // Correct concatenation
+      const json = await data.json();
       setResInfo(json.data);
     } catch (error) {
       console.error("Error fetching menu:", error);
     }
   };
 
- 
   const itemCards =
     resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card
-      ?.card?.itemCards ||
-    resInfo?.cards?.[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card
-      ?.card?.itemCards ||
-    [];
-
+      ?.card?.itemCards || [];
   const name = resInfo?.cards?.[2]?.card?.card?.info?.name;
   const cuisines = resInfo?.cards?.[2]?.card?.card?.info?.cuisines;
   const costForTwoMessage =

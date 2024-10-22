@@ -14,17 +14,23 @@ const RestaurantMenu = () => {
 
   const fetchMenu = async () => {
     try {
-      const data = await fetch(`${MENU_API_URL}${resId}`); // Correct concatenation
+      const data = await fetch(`${MENU_API_URL}${resId}`);
       const json = await data.json();
+      console.log("Fetched Data:", json); // Log the fetched data for debugging
       setResInfo(json.data);
     } catch (error) {
       console.error("Error fetching menu:", error);
     }
   };
 
+  // Extract items and restaurant info
   const itemCards =
     resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card
       ?.card?.itemCards || [];
+
+  // Log itemCards to check if it's correctly assigned
+  console.log("Item Cards:", itemCards);
+
   const name = resInfo?.cards?.[2]?.card?.card?.info?.name;
   const cuisines = resInfo?.cards?.[2]?.card?.card?.info?.cuisines;
   const costForTwoMessage =

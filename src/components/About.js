@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div>
       <h1>About</h1>
-      <User name={"Mahadev Athani"}/>
+      {/* <User name={"Mahadev Athani"}/> */}
       <UserClass name={"Mahadev Chidanand Athani (class)"} location={"Bengal"}/>
     </div>
   )

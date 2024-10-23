@@ -22,3 +22,5 @@ Two types of routing
 
 # Class based component -older version
 
+NEVER UPDATE THE STATE VARIABLE DIRECTLY
+

@@ -1,3 +1,11 @@
+/**
+ * The `Body` component fetches a list of restaurants, allows filtering by search text and top rating,
+ * and displays restaurant cards with links.
+ * @returns The `Body` component is being returned. It contains conditional rendering based on the
+ * length of `listOfRestaurants`. If the length is 0, it renders a `Shimmer` component. Otherwise, it
+ * renders a div with class "body" containing search and filter functionality, and a list of restaurant
+ * cards based on the filteredRestaurant state.
+ */
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";

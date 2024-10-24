@@ -1,3 +1,6 @@
+/* This is a React class component that displays counts and user information, with the ability to
+increase counts on button click. */
+
 import React from "react";
 
 class UserClass extends React.Component{
@@ -9,14 +12,17 @@ class UserClass extends React.Component{
       count1:0,
       count2:0,
     }
- 
+   console.log(" Child Construtor");
+  }
+  componentDidMount(){
+    console.log("component did mount");
   }
 
   
     render(){
        const { name, location } = this.props;
        const {count,count1,count2}=this.state;
-       
+       console.log("Child Render");
         return (
           <div className="user-card">
             <h1>Count :{count}</h1>

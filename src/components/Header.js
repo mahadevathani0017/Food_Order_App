@@ -1,3 +1,11 @@
+/**
+ * The `Header` component in React displays a navigation bar with links and a login/logout button that
+ * toggles its text.
+ * @returns The `Header` component is being returned. It consists of a header section with a logo,
+ * navigation items (Home, About, Contact Us, Cart), and a login button that toggles between "Login"
+ * and "Logout" based on the `btnNameReact` state. The `Header` component is exported as the default
+ * export.
+ */
 import { useState,useEffect } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";

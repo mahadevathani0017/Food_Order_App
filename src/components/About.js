@@ -18,14 +18,9 @@ class About extends React.Component{
       <div>
         <h1>About</h1>
         {/* <User name={"Mahadev Athani"}/> */}
-        <UserClass
-          name={"Mahadev Athani (class)"}
-          location={"Bengal class"}
-        />
-        <UserClass
-          name={"Namaste  class"}
-          location={"youtube class"}
-        />
+        <UserClass name={"First (class)"} location={"First class"} />
+        <UserClass name={"Second  class"} location={"Second class"} />
+        <UserClass name={"third  class"} location={"Third class"} />
       </div>
     );
   }
@@ -43,4 +38,19 @@ class About extends React.Component{
 
 export default About;
 
+
+/*
+-Parent Construtor
+-Parent render
+   - First Construtor
+   - First Render
+
+   -Second construtor
+   -Second render
+
+   -First ComponentMountDid
+   -Second ComponentMountDid
+
+Parent ComponentMountDid
+*/
 

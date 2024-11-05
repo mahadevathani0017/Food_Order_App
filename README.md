@@ -24,3 +24,17 @@ Two types of routing
 
 NEVER UPDATE THE STATE VARIABLE DIRECTLY
 
+/*
+-Parent Construtor
+-Parent render
+   - First Construtor
+   - First Render
+
+   -Second construtor
+   -Second render
+
+   -First ComponentMountDid
+   -Second ComponentMountDid
+
+Parent ComponentMountDid
+*/

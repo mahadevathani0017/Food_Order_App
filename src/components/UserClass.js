@@ -8,38 +8,25 @@ class UserClass extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      count:0,
-      count1:0,
-      count2:0,
+      userInfo:{
+        name:"maha",
+        location:"default",
+      }
     }
-   console.log(this.props.name+" Child Construtor");
+   
   }
-  componentDidMount(){
-    console.log( this.props.name+"component did mount");
+  async componentDidMount(){
+    const data = await fetch("https://api.github.com/users/mahadevathani0017");
+    const json= await data.json();
+    this.setState({
+      userInfo:json,
+    })
+    console.log(json);
   }
-
-  
     render(){
-       const { name, location } = this.props;
-       const {count,count1,count2}=this.state;
-       console.log(this.props.name+"Child Render");
-        return (
+      return (
           <div className="user-card">
-            <h1>Count :{count}</h1>
-            <h1>Count :{count1}</h1>
-            <h1>Count :{count2}</h1>
-            <button
-              onClick={() => {
-                this.setState({
-                  count: this.state.count + 1,
-                  count1: this.state.count1 + 1,
-                  count2: this.state.count2 + 2,
-                });
-              }}
-            >
-              Count increase
-            </button>
-            <h2>Name:{name}</h2>
+            <h2>Name:{this.state.userinfo.name}</h2>
             <h3>Location:{location}</h3>
             <h3>Contact:896797998979</h3>
           </div>

@@ -25,10 +25,14 @@ class UserClass extends React.Component {
     console.log(json);
   }
   componentDidUpdate(){
+    this.timer=setInterval(()=>{
+      console.log("NAMASTE OP");
+    },1000)
     console.log("Update did mount");
   }
 
   componentWillUnmount(){
+    clearInterval(this.timer)
     console.log("Will unmount called");
   }
   render() {

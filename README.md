@@ -38,3 +38,7 @@ NEVER UPDATE THE STATE VARIABLE DIRECTLY
 
 Parent ComponentMountDid
 */
+episode 9 start
+-optimization
+
+

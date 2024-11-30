@@ -8,10 +8,10 @@
  * If there are no items available, it displays a message "No items available".
  */
 
-import React, { useEffect, useState } from "react";
+
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MENU_API_URL } from "../utils/constants";
+
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
   

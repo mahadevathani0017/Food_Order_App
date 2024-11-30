@@ -10,7 +10,8 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
+import SnakeGame from "../gamesforfun/SnakeGame";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
@@ -35,7 +36,10 @@ const Body = () => {
     setListOfRestaurants(restaurants);
     setFilteredRestaurant(restaurants);
   };
-2
+  const onlineStatus=useOnlineStatus();
+  if(onlineStatus==false) return (
+    <SnakeGame/>
+  )
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (

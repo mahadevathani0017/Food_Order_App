@@ -47,3 +47,7 @@ episode 9 start
 - 2.Code splitting
 - 3.dynamic bunding
 
+Lazy loading
+-a design pattern in react that holds component and resource  only when they are needed,rather than all at once
+
+it is fuction which conatins the callback function and import();

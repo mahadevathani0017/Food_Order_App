@@ -11,7 +11,8 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import SnakeGame from "../gamesforfun/SnakeGame";
+
+import DinoGame from "../gamesforfun/DinoGame";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
@@ -38,7 +39,7 @@ const Body = () => {
   };
   const onlineStatus=useOnlineStatus();
   if(onlineStatus==false) return (
-    <SnakeGame/>
+    <DinoGame/>
   )
   return listOfRestaurants.length === 0 ? (
     <Shimmer />

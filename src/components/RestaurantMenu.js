@@ -1,73 +1,75 @@
-/**
- * Documentation
- * The `RestaurantMenu` component fetches and displays restaurant menu information based on the
- * provided restaurant ID.
- * @returns The `RestaurantMenu` component is being returned. It fetches menu data based on the `resId`
- * parameter from the URL, displays a loading shimmer component while fetching data, and then renders
- * the restaurant name, cuisines, cost for two, and a list of menu items with their names and prices.
- * If there are no items available, it displays a message "No items available".
- */
-
-
-import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
+import { MENU_API_URL } from "../utils/constants";
 
-import useRestaurantMenu from "../utils/useRestaurantMenu";
+
 const RestaurantMenu = () => {
-  
-
   const { resId } = useParams();
-  const resInfo=useRestaurantMenu(resId);
+  const [resInfo, setResInfo] = useState(null);
+  const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   fetchMenu();
-  // }, []);
+  useEffect(() => {
+    fetchMenu();
+  }, [resId]);
 
-  // const fetchMenu = async () => {
-  //   try {
-  //     const data = await fetch(`${MENU_API_URL}${resId}`);
-  //     const json = await data.json();
-  //     console.log("Fetched Data:", json); 
-  //     setResInfo(json.data);
-  //   } catch (error) {
-  //     console.error("Error fetching menu:", error);
-  //   }
-  // };
+  const fetchMenu = async () => {
+    try {
+      const response = await fetch(`${MENU_API_URL}${resId}`);
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
+      const json = await response.json();
+      console.log("Full Response Data:", json);
+      setResInfo(json?.data || null);
+    } catch (error) {
+      console.error("Error fetching menu:", error);
+      setError("Failed to fetch menu data.");
+    }
+  };
 
+  const regularCards =
+    resInfo?.cards?.find((card) => card?.groupedCard?.cardGroupMap?.REGULAR)
+      ?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
 
   const itemCards =
-    resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card
-      ?.card?.itemCards || [];
+    regularCards.find((card) => card?.card?.card?.itemCards)?.card?.card
+      ?.itemCards || [];
 
-  console.log("Item Cards:", itemCards);
-
-  const name = resInfo?.cards?.[2]?.card?.card?.info?.name;
-  const cuisines = resInfo?.cards?.[2]?.card?.card?.info?.cuisines;
+  const name =
+    resInfo?.cards?.[2]?.card?.card?.info?.name || "Unknown Restaurant";
+  const cuisines = resInfo?.cards?.[2]?.card?.card?.info?.cuisines || [];
   const costForTwoMessage =
-    resInfo?.cards?.[2]?.card?.card?.info?.costForTwoMessage;
+    resInfo?.cards?.[2]?.card?.card?.info?.costForTwoMessage ||
+    "Cost info unavailable";
 
-  return resInfo === null ? (
-    <Shimmer />
-  ) : (
+  return (
     <div className="menu">
-      <h1>{name}</h1>
-      <p>
-        {cuisines?.join(", ")} - {costForTwoMessage}
-      </p>
-      <h1>Menu</h1>
-      <ul>
-        {itemCards.length > 0 ? (
-          itemCards.map((item) => (
-            <li key={item?.card?.info?.id}>
-              {item?.card?.info?.name} - {"Rs."}
-              {item?.card?.info?.price / 100 ||
-                item?.card?.info?.defaultPrice / 100}
-            </li>
-          ))
-        ) : (
-          <li>No items available</li>
-        )}
-      </ul>
+      {resInfo === null && !error ? (
+        <Shimmer />
+      ) : error ? (
+        <div className="error-message">{error}</div>
+      ) : (
+        <>
+          <h1>{name}</h1>
+          <p>
+            {cuisines?.join(", ")} - {costForTwoMessage}
+          </p>
+          <h1>Menu</h1>
+          <ul>
+            {itemCards.length > 0 ? (
+              itemCards.map((item) => (
+                <li key={item?.card?.info?.id}>
+                  {item?.card?.info?.name} - {"Rs."}
+                  {item?.card?.info?.price / 100 ||
+                    item?.card?.info?.defaultPrice / 100}
+                </li>
+              ))
+            ) : (
+              <li>No items available</li>
+            )}
+          </ul>
+        </>
+      )}
     </div>
   );
 };

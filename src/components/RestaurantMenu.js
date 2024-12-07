@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { MENU_API_URL } from "../utils/constants";
 
-
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const [resInfo, setResInfo] = useState(null);

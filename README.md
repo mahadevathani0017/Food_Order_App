@@ -7,7 +7,7 @@
 1-useState() 
 2-useEffect()
 
-useEffect:-is render everytime if it is not contain dependency array
+#useEffect:-is render everytime if it is not contain dependency array
 
 Two types of routing 
 
@@ -41,4 +41,9 @@ Parent ComponentMountDid
 episode 9 start
 -optimization
 
+
+#App optimization methods
+- 1.Chunking {smaller chunks}
+- 2.Code splitting
+- 3.dynamic bunding
 

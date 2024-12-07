@@ -20,25 +20,32 @@ const Header = () => {
    
   },[btnNameReact]);
   return (
-    
     <div className="header">
       <div>
         <img className="logo" src={LOGO_URL} />
       </div>
       <div className="nav-items">
-
         <ul>
-          <li>Online status:{onlineStatus ?"🟩":"🔴"}</li>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about" >About</Link> </li>
-          <li><Link to="/contact">Contact Us</Link> </li>
+          <li>Online status:{onlineStatus ? "🟩" : "🔴"}</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocerys</Link>
+          </li>
           <li>Cart</li>
           <button
             className="login-btn"
             onClick={() => {
-               btnNameReact=="Login" 
-                ?setBtnNameReact("Logout")
-                :setBtnNameReact("Login");
+              btnNameReact == "Login"
+                ? setBtnNameReact("Logout")
+                : setBtnNameReact("Login");
             }}
           >
             {btnNameReact}
@@ -46,7 +53,6 @@ const Header = () => {
         </ul>
       </div>
     </div>
-    
   );
 };
 

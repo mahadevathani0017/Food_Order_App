@@ -9,7 +9,8 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "/index.css";
 
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
+import Shimmer from "./components/Shimmer";
 
 //app chunking
 //code splitting
@@ -45,12 +46,16 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path:"/grocery",
-        element:<Grocery/>,
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<>Loading.....</>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurant/:resId",
-        element: <RestaurantMenu/>,
+        element: <RestaurantMenu />,
       },
     ],
     errorElement: <Error />,

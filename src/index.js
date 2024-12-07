@@ -8,11 +8,15 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "/index.css";
-import Grocery from "./components/Grocery";
+
+import { lazy } from "react";
 
 //app chunking
 //code splitting
 //dyamic budling
+//lazy loading
+
+const Grocery=lazy(()=>import("./components/Grocery"));
 
 const AppLayout = () => {
   return (

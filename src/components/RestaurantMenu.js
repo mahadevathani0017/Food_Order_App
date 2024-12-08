@@ -1,31 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-import { MENU_API_URL } from "../utils/constants";
+
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const [resInfo, setResInfo] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetchMenu();
-  }, [resId]);
-
-  const fetchMenu = async () => {
-    try {
-      const response = await fetch(`${MENU_API_URL}${resId}`);
-      if (!response.ok)
-        throw new Error(`HTTP error! status: ${response.status}`);
-      const json = await response.json();
-      console.log("Full Response Data:", json);
-      setResInfo(json?.data || null);
-    } catch (error) {
-      console.error("Error fetching menu:", error);
-      setError("Failed to fetch menu data.");
-    }
-  };
-
+  const{resInfo,error}=useRestaurantMenu(resId);
+ 
   const regularCards =
     resInfo?.cards?.find((card) => card?.groupedCard?.cardGroupMap?.REGULAR)
       ?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];

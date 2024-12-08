@@ -7,22 +7,32 @@
  * @returns The `useRestaurantMenu` custom hook is returning the `resInfo` state variable, which
  * contains the data fetched from the MENU_API_URL for a specific restaurant ID (`resId`).
  */
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { MENU_API_URL } from "../utils/constants";
-const useRestaurantMenu=(resId)=>{
-    //fetchData
-    const [resInfo,setResInfo]=useState(null);
-    useEffect(()=>{
-       fetchData();
-    },[]);
-    const fetchData=async()=>{
-        const data = await fetch(MENU_API_URL+resId);
-        const json=await data.json();
-        setResInfo(json.data);
-    }
 
-    return resInfo;
+const useRestaurantMenu = (resId) => {
+  const [resInfo, setResInfo] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchMenu = async () => {
+      try {
+        const response = await fetch(`${MENU_API_URL}${resId}`);
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
+        const json = await response.json();
+        console.log("Full Response Data:", json);
+        setResInfo(json?.data || null);
+      } catch (error) {
+        console.error("Error fetching menu:", error);
+        setError("Failed to fetch menu data.");
+      }
+    };
+
+    fetchMenu();
+  }, [resId]);
+
+  return { resInfo, error };
 };
 
 export default useRestaurantMenu;
-

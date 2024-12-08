@@ -14,7 +14,7 @@ import { lazy, Suspense } from "react";
 //app chunking
 //code splitting
 //dyamic budling
-//lazy loading
+//lazy loading-to optimize
 //on demand loading
 
 const Grocery=lazy(()=>import("./components/Grocery"));

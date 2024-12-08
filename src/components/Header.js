@@ -20,26 +20,30 @@ const Header = () => {
    
   },[btnNameReact]);
   return (
-    <div className="header">
-      <div>
-        <img className="logo" src={LOGO_URL} />
+    <div className="flex justify-between bg-pink-100 shadow-lg mb-2">
+      <div className="logo-container bg-pink-200">
+        <img className="w-50" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online status:{onlineStatus ? "🟩" : "🔴"}</li>
-          <li>
+      <div className="flex items-center ">
+        <ul className="flex p-4 m-4">
+          <li className="px-4 text-xl">
+            Online status:{onlineStatus ? "🟩" : "🔴"}
+          </li>
+          <li className="px-4 bg-yellow-300 text-xl">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4 text-xl">
             <Link to="/about">About</Link>
           </li>
-          <li>
+          <li className="px-4 text-xl">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-4 text-xl">
             <Link to="/grocery">Grocerys</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4 text-xl">
+            Cart
+          </li>
           <button
             className="login-btn"
             onClick={() => {

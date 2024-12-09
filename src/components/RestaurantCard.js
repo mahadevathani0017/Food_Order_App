@@ -12,10 +12,14 @@ import { CDN_URL } from "../utils/constants";
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
-    resData?.info;
+  const { cloudinaryImageId, 
+    name, 
+    cuisines, 
+    avgRating, 
+    costForTwo 
+  } =resData?.info;
   return (
-    <div className="m-4 p-4 w-[250px] rounded-lg ">
+    <div className="m-4 p-4 w-[260px] h-[510px] bg-gray-100 rounded-lg hover:bg-gray-400 ">
       <img
         className="rounded-lg"
         alt="reso-logo"

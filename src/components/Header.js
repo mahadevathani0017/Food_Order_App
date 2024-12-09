@@ -20,32 +20,31 @@ const Header = () => {
    
   },[btnNameReact]);
   return (
-    <div className="flex justify-between bg-pink-100 shadow-lg mb-2">
+    <div className="flex justify-between bg-pink-100 shadow-lg mb-2 sm:bg-yellow-200 ">
       <div className="logo-container bg-pink-200">
         <img className="w-50" src={LOGO_URL} />
       </div>
-      <div className="flex items-center ">
+      <div className="flex items-center">
         <ul className="flex p-4 m-4">
-          <li className="px-4 text-xl">
-            Online status:{onlineStatus ? "🟩" : "🔴"}
+          <li className="px-4 text-xl text-sky-600 font-extrabold">
+            Online Status:{onlineStatus ? "🟩" : "🔴"}
           </li>
-          <li className="px-4 bg-yellow-300 text-xl">
+          <li className="px-4 text-xl text-sky-600 font-extrabold">
             <Link to="/">Home</Link>
           </li>
-          <li className="px-4 text-xl">
+          <li className="px-4 text-xl text-sky-600 font-extrabold">
             <Link to="/about">About</Link>
           </li>
-          <li className="px-4 text-xl">
+          <li className="px-4 text-xl text-sky-600 font-extrabold">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="px-4 text-xl">
+          <li className="px-4 text-xl text-sky-600 font-extrabold">
             <Link to="/grocery">Grocerys</Link>
           </li>
-          <li className="px-4 text-xl">
-            Cart
-          </li>
+          <li className="px-4 text-xl text-sky-600 font-extrabold">Cart</li>
           <button
-            className="login-btn"
+            className="hover:bg-blue-300 rounded-lg text-2xl font-extrabold px-4"
+        
             onClick={() => {
               btnNameReact == "Login"
                 ? setBtnNameReact("Logout")

@@ -31,7 +31,7 @@ const RestaurantMenu = () => {
     "Cost info unavailable";
 
   return (
-    <div className="text-center">
+    <div className="text-center bg-sky-200">
       {resInfo === null && !error ? (
         <Shimmer />
       ) : error ? (
@@ -44,7 +44,7 @@ const RestaurantMenu = () => {
           </p>
           {/**Accorderain */}
           {categories.map((category)=>(
-            <RestaurantCategory data={category?.card?.card}/>
+            <RestaurantCategory key={category?.card?.card?.title} data={category?.card?.card}/>
           ))}
           
         </div>

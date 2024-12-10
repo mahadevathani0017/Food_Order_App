@@ -1,7 +1,15 @@
+/**
+ * The ItemList component in JavaScript renders a list of items with their names, prices, descriptions,
+ * and images, along with an "Add" button for each item.
+ * @returns The `ItemList` component is being returned. It maps over the `items` array and renders a
+ * list of items with their name, price, description, and image. Each item is displayed in a styled
+ * container with an image and an "Add +" button.
+ */
 import { CDN_URL } from "../utils/constants";
 
 const ItemList = ({ items }) => {
   console.log(items);
+
 
   return (
     <div>

@@ -11,13 +11,21 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
 import DinoGame from "../gamesforfun/DinoGame";
+
+
+
+
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+//promopred component
+  // const RestaurantCardPromoted=withPromotedLabel(RestaurantCard);
+
+  console.log(listOfRestaurants);
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -85,7 +93,12 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {
+     
+              
+                <RestaurantCard resData={restaurant} />
+              
+            }
           </Link>
         ))}
       </div>

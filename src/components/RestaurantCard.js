@@ -12,12 +12,13 @@ import { CDN_URL } from "../utils/constants";
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  const { cloudinaryImageId, 
-    name, 
-    cuisines, 
-    avgRating, 
-    costForTwo 
-  } =resData?.info;
+  const {
+    cloudinaryImageId,
+    name,
+    cuisines,
+    avgRating,
+    costForTwo
+  } = resData?.info;
   return (
     <div className="m-4 p-4 w-[260px] h-[510px] bg-gray-100 rounded-lg hover:bg-gray-400 ">
       <img
@@ -25,7 +26,7 @@ const RestaurantCard = (props) => {
         alt="reso-logo"
         src={CDN_URL + cloudinaryImageId}
       />
-      <h4 className=" font-bold py-4">{name}</h4>
+      <h4 className="font-bold py-4">{name}</h4>
       <h4>{cuisines.join(", ")}</h4>
       <h4>{avgRating} stars</h4>
       <h4>{costForTwo}</h4>
@@ -33,5 +34,10 @@ const RestaurantCard = (props) => {
     </div>
   );
 };
+//Higher order component
+
+//input -ResturantCard=>Prompted Restro card
+
+
 
 export default RestaurantCard;

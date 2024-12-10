@@ -51,3 +51,6 @@ Lazy loading
 -a design pattern in react that holds component and resource  only when they are needed,rather than all at once
 
 it is fuction which conatins the callback function and import();
+
+#Episode 10
+Higher order component-{takes input as a component and return component}

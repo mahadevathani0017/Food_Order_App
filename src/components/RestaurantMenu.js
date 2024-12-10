@@ -1,22 +1,32 @@
 import { useParams } from "react-router-dom";
-
 import Shimmer from "./Shimmer";
-
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const{resInfo,error}=useRestaurantMenu(resId);
- 
+  const { resInfo, error } = useRestaurantMenu(resId);
+
+  // console.log("resInfo:", resInfo); // Debug log to inspect the full response
+
   const regularCards =
     resInfo?.cards?.find((card) => card?.groupedCard?.cardGroupMap?.REGULAR)
       ?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
+
+  // console.log("regularCards:", regularCards);
+  console.log(
+    resInfo?.cards?.find((card) => card?.groupedCard?.cardGroupMap?.REGULAR)
+      ?.groupedCard?.cardGroupMap?.REGULAR?.cards
+  );
 
   const itemCards =
     regularCards.find((card) => card?.card?.card?.itemCards)?.card?.card
       ?.itemCards || [];
 
+  const categories = resInfo?.cards?.find(
+    (card) => card?.groupedCard?.cardGroupMap?.REGULAR
+  )?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c?.card?.card?.['@type'] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+
+  console.log(categories);
   const name =
     resInfo?.cards?.[2]?.card?.card?.info?.name || "Unknown Restaurant";
   const cuisines = resInfo?.cards?.[2]?.card?.card?.info?.cuisines || [];
